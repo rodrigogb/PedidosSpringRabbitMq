@@ -6,7 +6,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import tech.rodrigo.pedidos_ms.config.RabbitMqConfig;
 import tech.rodrigo.pedidos_ms.entity.Cliente;
-import tech.rodrigo.pedidos_ms.listener.ClientesCriadosListener;
 import tech.rodrigo.pedidos_ms.repository.ClienteRepository;
 
 @Service
@@ -23,6 +22,7 @@ public class ClienteService {
     }
 
     public void save(Cliente cliente) {
+
         clienteRepository.save(cliente);
 
         if (cliente.getNome().equals("física")) {
