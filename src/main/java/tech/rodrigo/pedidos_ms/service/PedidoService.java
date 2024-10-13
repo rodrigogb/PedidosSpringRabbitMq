@@ -6,8 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
-import tech.rodrigo.pedidos_ms.controller.dto.PedidoResponse;
-import tech.rodrigo.pedidos_ms.entity.PedidoEntity;
+import tech.rodrigo.pedidos_ms.controller.dto.PedidoResponseDTO;
+import tech.rodrigo.pedidos_ms.entity.Pedido;
 import tech.rodrigo.pedidos_ms.entity.PedidoItem;
 import tech.rodrigo.pedidos_ms.listener.dto.PedidoCriadoEvent;
 import tech.rodrigo.pedidos_ms.repository.PedidoRepository;
@@ -28,7 +28,7 @@ public class PedidoService {
         this.mongoTemplate = mongoTemplate;
     }
     public void save(PedidoCriadoEvent event) {
-        var entity = new PedidoEntity();
+        var entity = new Pedido();
         entity.setPedidoId(event.codigoPedido());
         entity.setClienteId(event.codigoCliente());
         entity.setItens(getPedidoItens(event));
@@ -37,9 +37,9 @@ public class PedidoService {
         pedidoRepository.save(entity);
     }
 
-    public Page<PedidoResponse> findAllByClienteId(Long clienteId, PageRequest pageRequest) {
+    public Page<PedidoResponseDTO> findAllByClienteId(Long clienteId, PageRequest pageRequest) {
         var orders = pedidoRepository.findAllByClienteId(clienteId, pageRequest);
-        return orders.map(PedidoResponse::fromEntity);
+        return orders.map(PedidoResponseDTO::fromEntity);
     }
 
     public BigDecimal findTotalOnPedidosByClienteId(Long clienteId) {

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Document(collection = "tb_pedidos")
-public class PedidoEntity {
+public class Pedido {
 
     @MongoId
     private Long pedidoId;
@@ -23,7 +23,7 @@ public class PedidoEntity {
 
     private List<PedidoItem> itens;
 
-    public PedidoEntity() {
+    public Pedido() {
 
     }
 
