@@ -25,8 +25,8 @@ docker-compose up
 ```
 
 ## Exemplos de Requisições
-1. Criar Cliente:
-Para criar um novo cliente fazendo um POST para a API:
+1. Criar Cliente.
+Para criar um novo cliente e armazená-lo no MongoDB, faça o seguinte POST:
 
 ```bash
 curl -X POST http://localhost:8080/clientes \
@@ -37,7 +37,7 @@ curl -X POST http://localhost:8080/clientes \
 }'
 ```
 
-2. Enviar Mensagem de Pedido para o RabbitMQ:
+2. Enviar Mensagem de Pedido para o RabbitMQ.
 Você pode enviar uma mensagem de pedido para a fila do RabbitMQ, que depois será enviada para o MongoDB.
 Para isso, entre na interface do RabbitMQ abrindo o navegador e entrando no endereço: http://localhost:15672/#/
 - Entre com usuário/senha: guest/guest.
