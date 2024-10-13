@@ -29,11 +29,12 @@ docker-compose up
 Para criar um novo cliente e armazená-lo no MongoDB, faça o seguinte POST:
 
 ```bash
-curl -X POST http://localhost:8080/clientes \
--H "Content-Type: application/json" \
--d '{
+curl --request POST \
+  --url http://localhost:8080/clientes \
+  --header 'content-type: application/json' \
+  --data '{
   "nome": "exemplo",
-  "documento": "123"
+  "documento": "12345"
 }'
 ```
 
@@ -62,6 +63,13 @@ Para isso, entre na interface do RabbitMQ abrindo o navegador e entrando no ende
    ]
 }
 ```
+3. Buscar pedidos de um cliente.
+Para isso, faça o seguinte GET:
+```bash
+curl --request GET \
+  --url http://localhost:8080/clientes/45/pedidos
+```
 
-# Obrigado pela visita :)
+
+## Obrigado pela visita :)
 
